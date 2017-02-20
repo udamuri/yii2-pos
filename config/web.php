@@ -6,9 +6,19 @@ use \yii\web\Request;
 $baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
 
 $config = [
-    'id' => 'basic',
+    'id' => 'basic-pos',
+    'name' => 'MURI BUDIMAN',
+    //'language'=>'id',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'product' => [
+            'class' => 'app\modules\product\module',
+        ],
+        'supplier' => [
+            'class' => 'app\modules\supplier\module',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -21,6 +31,9 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+        ],
+        'mycomponent' => [
+            'class' => 'app\components\TaskComponent',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -46,6 +59,17 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'home'=>'site/index',
+                'login'=>'site/login',
+                'products'=>'product/site/index',
+                'product/create'=>'product/site/create',
+                'product/update/<id:[0-9]+>'=>'product/site/update',
+                'category'=>'product/site/category',
+                'category/create'=>'product/site/category-create',
+                'category/update/<id:[0-9]+>'=>'product/site/category-update',
+                'suppliers'=>'supplier/site/index',
+                'supplier/create'=>'supplier/site/create',
+                'supplier/update/<id:[0-9]+>'=>'supplier/site/update',
             ],
         ],
         
@@ -59,14 +83,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
 

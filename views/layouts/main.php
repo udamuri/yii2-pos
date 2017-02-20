@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\widgets\Myalert;
 
 AppAsset::register($this);
 ?>
@@ -27,48 +28,74 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
+        'innerContainerOptions' => ['class'=>'container-fluid'],
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
         ],
     ]);
+
+    $menuItems = [
+        ['label' => 'Kasir', 'url' => ['/home']],
+    ];
+
+    if(Yii::$app->user->isGuest)
+    {
+        $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
+    }
+    else
+    {
+        $menuItems[] = '<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Data <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="'.Yii::$app->homeUrl.'suppliers">Suppliers</a></li>
+                            <li><a href="'.Yii::$app->homeUrl.'category">Category</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="'.Yii::$app->homeUrl.'products">Product</a></li>
+                        </ul>
+                      </li>';
+
+        $menuItems[] = '<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.Yii::$app->user->identity->username.' <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="javascript:void(0)">User Setting</a></li>
+                          <li><a href="javascript:void(0)">Pos Setting</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li>
+                            '.Html::beginForm(['/site/logout'], 'post').'
+                            '.Html::submitButton('Logout', ['class' => 'btn btn-link logout'] ).'                
+                            '.Html::endForm().'
+                            </li>
+                        </ul>
+                      </li>';
+    }
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <div class="row">
+            <div class="col-md-12">
+                <?=Myalert::widget(); ?>
+            </div>
+        </div>
         <?= $content ?>
     </div>
 </div>
 
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+    <div class="container-fluid">
+        <p class="pull-left">&copy; Muri <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <!-- <p class="pull-right">Muri Budiman</p> -->
     </div>
 </footer>
 
