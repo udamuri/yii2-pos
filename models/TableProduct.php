@@ -34,9 +34,9 @@ class TableProduct extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_barcode', 'product_name', 'product_sale_price', 'product_sale_discount', 'product_created_at', 'product_updated_at', 'userid'], 'required'],
+            [['product_barcode', 'product_name', 'product_sale_price', 'product_sale_discount', 'product_created_at', 'product_updated_at', 'userid', 'category_id'], 'required'],
             [['product_sale_price', 'product_sale_discount'], 'number'],
-            [['product_status', 'userid'], 'integer'],
+            [['product_status', 'userid', 'category_id'], 'integer'],
             [['product_created_at', 'product_updated_at'], 'safe'],
             [['product_barcode'], 'string', 'max' => 255],
             [['product_name'], 'string', 'max' => 150],
@@ -61,6 +61,7 @@ class TableProduct extends \yii\db\ActiveRecord
             'product_created_at' => 'Product Created At',
             'product_updated_at' => 'Product Updated At',
             'userid' => 'Userid',
+            'category_id' => 'Category',
         ];
     }
 }

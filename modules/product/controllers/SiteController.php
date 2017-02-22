@@ -70,7 +70,12 @@ class SiteController extends Controller
         {
             if(isset($get['search']))
             {
-                $search =  strtolower(trim(strip_tags($_GET['search'])));  
+                $search =  strtolower(trim(strip_tags($get['search'])));  
+            }
+
+            if(isset($get['category']))
+            {
+                $category =  strtolower(trim(strip_tags($get['category'])));  
             }
         }
     
@@ -84,13 +89,20 @@ class SiteController extends Controller
                         'tp.product_sale_discount',
                         'tp.product_status',
                         'tp.userid',
+                        'pc.category_name'
                     ])
                     ->from('tbl_product tp')
+                    ->leftJoin('tbl_product_category pc', 'pc.category_id = tp.category_id')
                     ->where('1');
                     
         if($search !== '')
         {
-            $query->andWhere('lower(product_barcode) LIKE "%'.$search.'%" OR lower(product_name) LIKE  "%'.$search.'%"');
+            $query->andWhere('lower(tp.product_barcode) LIKE "%'.$search.'%" OR lower(tp.product_name) LIKE  "%'.$search.'%"');
+        }
+
+        if($category !== '' AND is_numeric($category) AND $category > 0)
+        {
+            $query->andWhere(['tp.category_id'=>$category]);
         }
   
         $countQuery = clone $query;

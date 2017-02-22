@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use app\models\TableProductCategory;
 
 $this->title = 'Product';
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,8 +30,16 @@ $this->registerJs($jsx);
     <div class="col-md-6 col-sm-12 col-xs-12">
         <form  id="searchform" action="<?=Yii::$app->homeUrl;?>products"  method="GET" >
             <div class="row">
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                  <?php
+                    $dataList = ArrayHelper::map(TableProductCategory::find()->all(), 'category_id', 'category_name'); 
+                    $arrEmpty = ['0'=>'--General--'];
+                    $array_merge = array_merge($arrEmpty, $dataList);
+                    echo Html::dropDownList('category', $category , $array_merge, [
+                      'class'=>'form-control'
+                    ]);
+                  ?>
+              </div>
                 <div class="col-md-6 col-sm-12 col-xs-12"> 
                   <div class="input-group">
                     <input type="text" name="search" class="form-control" value="<?=$search;?>" placeholder="Search for...">
@@ -61,6 +70,7 @@ $this->registerJs($jsx);
                   <td width="3%">No.</td>
                   <td>Barcode</td>
                   <td>Name</td>
+                  <td>Category</td>
                   <td>Location</td>
                   <td>Sale Price</td>
                   <td>Sale Discount</td>
@@ -83,6 +93,7 @@ $this->registerJs($jsx);
                         <td>'.$start.'</td>
                         <td>'.$value['product_barcode'].'</td>
                         <td>'.$value['product_name'].'</td>
+                        <td>'.$value['category_name'].'</td>
                         <td>'.$value['product_location'].'</td>
                         <td class="text-right" >'.Yii::$app->mycomponent->money_format($value['product_sale_price'], 'Rp.').'</td>
                         <td class="text-right" >'.$value['product_sale_discount'].'%</td>

@@ -18,6 +18,7 @@ use app\models\TableProduct;
  * @property string $product_created_at
  * @property string $product_updated_at
  * @property integer $userid
+ * @property integer $category_id
  */
 
 class ProductForm extends Model
@@ -33,6 +34,7 @@ class ProductForm extends Model
     public $product_created_at;
     public $product_updated_at;
     public $userid;
+    public $category_id;
  
     /**
      * @inheritdoc
@@ -42,6 +44,9 @@ class ProductForm extends Model
         return [
           			
             ['product_id', 'integer'],
+            
+            ['category_id', 'required'],            
+            ['category_id', 'integer'],
 
 			['product_barcode', 'required'],
             ['product_barcode', 'filter', 'filter' => 'trim'],
@@ -80,6 +85,7 @@ class ProductForm extends Model
         if ($this->validate()) {
             $create = new TableProduct();
             $create->product_barcode = $this->product_barcode;
+            $create->category_id = $this->category_id;
             $create->product_name = $this->product_name;
             $create->product_location = $this->product_location;
             $create->product_sale_price = $this->product_sale_price;
@@ -106,6 +112,7 @@ class ProductForm extends Model
         if ($this->validate()) {
             $update = TableProduct::findOne($id);
             $update->product_barcode = $this->product_barcode;
+            $update->category_id = $this->category_id;
             $update->product_name = $this->product_name;
             $update->product_location = $this->product_location;
             $update->product_sale_price = $this->product_sale_price;
@@ -139,6 +146,7 @@ class ProductForm extends Model
         {
             $arrData = [
                 'product_id'=>$get['product_id'],
+                'category_id'=>$get['category_id'],
                 'product_barcode'=>$get['product_barcode'],
                 'product_name'=>$get['product_name'],
                 'product_location'=>$get['product_location'],
@@ -188,6 +196,7 @@ class ProductForm extends Model
             'product_created_at' => 'Created At',
             'product_updated_at' => 'Updated At',
             'userid' => 'User Id',
+            'category_id' => 'Category',
         ];
     }
 	

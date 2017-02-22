@@ -47,6 +47,16 @@ AppAsset::register($this);
     else
     {
         $menuItems[] = '<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transaction <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="'.Yii::$app->homeUrl.'suppliers">Suppliers</a></li>
+                            <li><a href="'.Yii::$app->homeUrl.'category">Category</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="'.Yii::$app->homeUrl.'products">Product</a></li>
+                        </ul>
+                      </li>';
+
+        $menuItems[] = '<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Data <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="'.Yii::$app->homeUrl.'suppliers">Suppliers</a></li>

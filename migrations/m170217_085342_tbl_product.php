@@ -14,6 +14,7 @@ class m170217_085342_tbl_product extends Migration
 
         $this->createTable('{{%tbl_product}}', [
             'product_id' => $this->primaryKey(),
+            'category_id' => $this->integer(11)->notNull()->defaultValue(0),
             'product_barcode' => $this->string(255)->unique()->notNull(),
             'product_name' => $this->string(150)->notNull(),
             'product_location' => $this->string(50),
