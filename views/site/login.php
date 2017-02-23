@@ -31,23 +31,31 @@ AppAsset::register($this);
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <!-- <p>Please fill out the following fields to login:</p> -->
-                <?php $model->rememberMe = 0;?>
-                <?php $form = ActiveForm::begin([
-                    'id' => 'login-form',
-                ]); ?>
-
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'password')->passwordInput() ?>
-
-                    <?= $form->field($model, 'rememberMe')->checkbox(['checked'=>false]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Login</h3>
                     </div>
+                    <div class="panel-body">
+                        <!-- <p>Please fill out the following fields to login:</p> -->
+                        <?php $model->rememberMe = 0;?>
+                        <?php $form = ActiveForm::begin([
+                            'id' => 'login-form',
+                        ]); ?>
 
-                <?php ActiveForm::end(); ?>
+                            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+
+                            <?= $form->field($model, 'password')->passwordInput() ?>
+
+                            <?= $form->field($model, 'rememberMe')->checkbox(['checked'=>false]) ?>
+
+                            <div class="form-group">
+                                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                            </div>
+
+                        <?php ActiveForm::end(); ?>
+                    </div>
+                </div>
+                
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
         </div>

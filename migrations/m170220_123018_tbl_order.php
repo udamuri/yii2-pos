@@ -15,9 +15,10 @@ class m170220_123018_tbl_order extends Migration
         $this->createTable('{{%tbl_order}}', [
             'order_id' => $this->primaryKey(),
             'supplier_id' => $this->integer(11)->notNull(),
+            'order_invoice' => $this->string(255)->notNull(),
             'order_desc' => $this->string(255)->notNull(),
             'order_receive_status' => $this->smallInteger()->notNull()->defaultValue(1), // 1 sell 0 purchase
-            'order_type' => $this->smallInteger()->notNull()->defaultValue(1), 
+            'order_type' => $this->smallInteger()->notNull()->defaultValue(1),  // 1 cash 0 credit
             'order_created_at' => $this->datetime()->notNull(),
             'order_updated_at' => $this->datetime()->notNull(),
             'order_total' => $this->double()->notNull(),

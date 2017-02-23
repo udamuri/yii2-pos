@@ -66,7 +66,7 @@ $this->registerJs($jsx);
       <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
-              <tr class="bg-success">
+              <tr class="bg-pos">
                   <td width="3%">No.</td>
                   <td>Barcode</td>
                   <td>Name</td>

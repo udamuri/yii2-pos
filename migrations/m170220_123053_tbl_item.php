@@ -16,9 +16,11 @@ class m170220_123053_tbl_item extends Migration
             'item_id' => $this->primaryKey(),
             'order_id' => $this->integer(11)->notNull(),
             'product_id' => $this->string(255)->notNull(),
-            'item_name' => $this->string(255)->notNull(), 
-            'item_price' => $this->double()->notNull(), 
-            'item_qty' => $this->integer(11)->notNull(),
+            'item_name' => $this->string(255)->notNull(),  
+            'item_price' => $this->double()->notNull(),
+            'item_unit' => $this->string(255)->notNull(), //satuan  
+            'item_unit_qty' => $this->integer(8)->notNull(),  // isi dalam satuan
+            'item_qty' => $this->integer(8)->notNull(),
         ], $tableOptions);    
     }
 
