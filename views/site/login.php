@@ -31,7 +31,7 @@ AppAsset::register($this);
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                       <h3 class="panel-title">Login</h3>
                     </div>
