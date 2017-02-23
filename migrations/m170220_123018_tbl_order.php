@@ -21,6 +21,7 @@ class m170220_123018_tbl_order extends Migration
             'order_type' => $this->smallInteger()->notNull()->defaultValue(1),  // 1 cash 0 credit
             'order_created_at' => $this->datetime()->notNull(),
             'order_updated_at' => $this->datetime()->notNull(),
+            'order_discount' => $this->smallInteger(3)->notNull()->defaultValue(0),
             'order_total' => $this->double()->notNull(),
             'userid' => $this->integer(11)->notNull(),
         ], $tableOptions);    
