@@ -18,6 +18,9 @@ $config = [
         'supplier' => [
             'class' => 'app\modules\supplier\module',
         ],
+        'purchase' => [ //penjualan
+            'class' => 'app\modules\purchase\module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -70,6 +73,7 @@ $config = [
                 'suppliers'=>'supplier/site/index',
                 'supplier/create'=>'supplier/site/create',
                 'supplier/update/<id:[0-9]+>'=>'supplier/site/update',
+                'purchase'=>'purchase/site/index'
             ],
         ],
         
