@@ -135,7 +135,7 @@ class CategoryForm extends Model
     {
         return [
             'category_id' => 'ID',
-            'category_name' => 'Name',
+            'category_name' => 'Nama',
             'category_status' => 'Status',
             'category_created_at' => 'Created At',
             'category_updated_at' => 'Updated At',

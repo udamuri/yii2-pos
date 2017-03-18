@@ -4,7 +4,7 @@ use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = 'Category';
+$this->title = 'Kategori';
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerJsFile(Yii::$app->homeUrl."js/index.js", ['depends' => [\yii\web\JqueryAsset::className()], 'position' =>  \yii\web\View::POS_HEAD]);
@@ -24,7 +24,7 @@ $this->registerJs($jsx);
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <a href="<?=Yii::$app->homeUrl;?>category/create" class="btn btn-success">Add New</a>
+        <a href="<?=Yii::$app->homeUrl;?>category/create" class="btn btn-success">Tambah Baru</a>
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12">
         <form  id="searchform" action="<?=Yii::$app->homeUrl;?>category"  method="GET" >
@@ -59,7 +59,7 @@ $this->registerJs($jsx);
             <thead>
               <tr class="bg-pos">
                   <td width="3%">No.</td>
-                  <td>Name</td>
+                  <td>Nama</td>
                   <td width="13%">Action</td>
               </tr>
             </thead>

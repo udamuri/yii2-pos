@@ -8,9 +8,9 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 //use yii\helpers\ArrayHelper;
 
-$this->title = 'Add New';
+$this->title = 'Tambah Baru';
 $this->params['breadcrumbs'][] = [
-    'label' =>'Category',
+    'label' =>'Kategori',
     'url' => Yii::$app->homeUrl.'category'
 ];
 $this->params['breadcrumbs'][] = $this->title;

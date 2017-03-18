@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Update';
 $this->params['breadcrumbs'][] = [
-    'label' =>'Product',
+    'label' =>'Produk',
     'url' => Yii::$app->homeUrl.'products'
 ];
 $this->params['breadcrumbs'][] = $this->title;

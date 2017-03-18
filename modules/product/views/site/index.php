@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\TableProductCategory;
 
-$this->title = 'Product';
+$this->title = 'Produk';
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerJsFile(Yii::$app->homeUrl."js/index.js", ['depends' => [\yii\web\JqueryAsset::className()], 'position' =>  \yii\web\View::POS_HEAD]);
@@ -25,7 +25,7 @@ $this->registerJs($jsx);
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <a href="<?=Yii::$app->homeUrl;?>product/create" class="btn btn-success">Add New</a>
+        <a href="<?=Yii::$app->homeUrl;?>product/create" class="btn btn-success">Tambah Baru</a>
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12">
         <form  id="searchform" action="<?=Yii::$app->homeUrl;?>products"  method="GET" >
@@ -69,11 +69,11 @@ $this->registerJs($jsx);
               <tr class="bg-pos">
                   <td width="3%">No.</td>
                   <td>Barcode</td>
-                  <td>Name</td>
-                  <td>Category</td>
-                  <td>Location</td>
-                  <td>Sale Price</td>
-                  <td>Sale Discount</td>
+                  <td>Nama</td>
+                  <td>Kategori</td>
+                  <td>Lokasi</td>
+                  <td>Harga Jual</td>
+                  <td>Discount</td>
                   <td width="13%">Action</td>
               </tr>
             </thead>

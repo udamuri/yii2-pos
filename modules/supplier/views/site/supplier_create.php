@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 //use yii\helpers\ArrayHelper;
 
-$this->title = 'Add New';
+$this->title = 'Tambah Baru';
 $this->params['breadcrumbs'][] = [
     'label' =>'Suppliers',
     'url' => Yii::$app->homeUrl.'suppliers'

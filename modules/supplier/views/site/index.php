@@ -24,7 +24,7 @@ $this->registerJs($jsx);
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <a href="<?=Yii::$app->homeUrl;?>supplier/create" class="btn btn-success">Add New</a>
+        <a href="<?=Yii::$app->homeUrl;?>supplier/create" class="btn btn-success">Tambah Baru</a>
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12">
         <form  id="searchform" action="<?=Yii::$app->homeUrl;?>suppliers"  method="GET" >
@@ -59,11 +59,11 @@ $this->registerJs($jsx);
             <thead>
               <tr class="bg-pos">
                   <td width="3%">No.</td>
-                  <td>Name</td>
-                  <td>Contact Person</td>
-                  <td>Address</td>
-                  <td>Phone 1</td>
-                  <td>Phone 2</td>
+                  <td>Nama</td>
+                  <td>Kontak Person</td>
+                  <td>ALamat</td>
+                  <td>Telfon 1</td>
+                  <td>Telfon 2</td>
                   <td width="13%">Action</td>
               </tr>
             </thead>

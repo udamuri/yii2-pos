@@ -188,15 +188,15 @@ class ProductForm extends Model
         return [
             'product_id' => 'ID',
             'product_barcode' => 'Barcode',
-            'product_name' => 'Name',
-            'product_location' => 'Location',
-            'product_sale_price' => 'Sale Price',
-            'product_sale_discount' => 'Sale Discount',
+            'product_name' => 'Nama',
+            'product_location' => 'Lokasi',
+            'product_sale_price' => 'Harga Jual',
+            'product_sale_discount' => 'Diskon',
             'product_status' => 'Status',
             'product_created_at' => 'Created At',
             'product_updated_at' => 'Updated At',
             'userid' => 'User Id',
-            'category_id' => 'Category',
+            'category_id' => 'Kategori',
         ];
     }
 	
