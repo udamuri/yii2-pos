@@ -7,7 +7,7 @@ $this->title = Yii::$app->name;
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Welcome MURI BLOG!</h1>
+        <h1>Welcome</h1>
 
         <p class="lead"></p>
     </div>
