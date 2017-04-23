@@ -1,6 +1,7 @@
+//@bgDefault      : #2a3f54;
 @bgDefault      : #2a3f54;
-@bgDefault      : #2a3f54;
-@colorwhite      : #ffffff;
+@colorwhite     : #ffffff;
+@gray           : rgb(229, 232, 234);
 
 .bg-pos {
     background-color: @bgDefault;
@@ -135,3 +136,20 @@ a.desc:after {
   border-color: darken(@bgDefault, 20%);
 }
 /* panel-default */
+
+.breadcrumb{
+    background-color: @bgDefault;
+    li a 
+    {
+        color: @colorwhite;
+        &:hover
+        {
+            color: @gray;
+        }
+    }
+
+    li.active 
+    {
+        color: @gray;
+    }
+}
