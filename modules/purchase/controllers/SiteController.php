@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\data\Pagination;
 use yii\db\Query;
 use yii\widgets\ActiveForm;
+use app\modules\purchase\models\OrderPurchaseForm;
 
 /**
  * Default controller for the `purchase` module
@@ -80,7 +81,6 @@ class SiteController extends Controller
                         'tp.order_invoice',
                         'tp.order_desc',
                         'tp.order_receive_status',
-                        'tp.order_receive_status',
                         'tp.order_type',
                         'tp.order_discount',
                         'tp.userid'
@@ -107,5 +107,21 @@ class SiteController extends Controller
             'search' =>$search,
             'category' =>$category
         ]);
+    }
+
+    public function actionCreate()
+    {
+        $model = new OrderPurchaseForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($post = $model->create()) {
+                Yii::$app->session->setFlash('success', "Buat Baru");
+                return Yii::$app->getResponse()->redirect(Yii::$app->homeUrl.'purchase');
+            }
+
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]); 
     }
 }
