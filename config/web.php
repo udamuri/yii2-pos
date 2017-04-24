@@ -7,7 +7,7 @@ $baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
 
 $config = [
     'id' => 'basic-pos',
-    'name' => 'MURI BUDIMAN',
+    'name' => 'MyPOS',
     'language'=>'id',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

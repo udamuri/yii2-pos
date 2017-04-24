@@ -33,7 +33,7 @@ $this->registerJs($jsx);
         <?= $this->render('supplier_form', [
             'model' => $model,
             'form_id' => 'form-create-supplier',
-            'button' => 'Save',
+            'button' => 'Simpan',
         ]) ?>
     </div>
 </div>

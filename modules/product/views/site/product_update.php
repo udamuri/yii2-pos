@@ -34,7 +34,7 @@ $this->registerJs($jsx);
             'model' => $model,
             '_model' => $_model,
             'form_id' => 'form-update-product',
-            'button' => 'Save Changes',
+            'button' => 'Simpan Perubahan',
         ]) ?>
     </div>
 </div>

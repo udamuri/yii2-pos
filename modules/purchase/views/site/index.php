@@ -8,11 +8,12 @@ $this->title = 'Pembelian';
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerJsFile(Yii::$app->homeUrl."js/index.js", ['depends' => [\yii\web\JqueryAsset::className()], 'position' =>  \yii\web\View::POS_HEAD]);
-//$this->registerJsFile(Yii::$app->homeUrl."js/product.js", ['depends' => [\yii\web\JqueryAsset::className()], 'position' =>  \yii\web\View::POS_HEAD]);
+$this->registerJsFile(Yii::$app->homeUrl."js/purchase.js", ['depends' => [\yii\web\JqueryAsset::className()], 'position' =>  \yii\web\View::POS_HEAD]);
 $token = $this->renderDynamic('return Yii::$app->request->csrfToken;');
 
 $jsx = <<< 'SCRIPT'
     IndexObj.initialScript();
+    PurchaseObj.initialScript();
 SCRIPT;
 $this->registerJs('IndexObj.baseUrl = "'. Yii::$app->homeUrl.'"', \yii\web\View::POS_HEAD);
 $this->registerJs('IndexObj.csrfToken = "'. $token.'"',  \yii\web\View::POS_HEAD);

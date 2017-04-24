@@ -3,31 +3,66 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-
-/* @var $this yii\web\View */
-/* @var $model frontend\models\TableForum */
-/* @var $form yii\widgets\ActiveForm */
+use app\models\TableSupplier;
 ?>
-<div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <?php $form = ActiveForm::begin([
-                            'id' => $form_id,
-                            //'layout' => 'horizontal',
-                        ]); 
 
-                if($form_id === 'form-update-purchase')
-                {
-                   
-                }
+<?php $form = ActiveForm::begin([
+                    'id' => $form_id,
+                    //'layout' => 'horizontal',
+                ]); 
 
-        ?>
-              
-                <div class="form-group">
-                    <?= Html::submitButton($button, ['class' => 'btn btn-primary', 'name' => 'category-button']) ?>
+        if($form_id === 'form-update-purchase')
+        {
+           
+        }
+
+?>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <?= $form->field($model, 'order_invoice')->textInput(); ?>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <?php
+                        $dataList = ArrayHelper::map(TableSupplier::find()->all(), 'supplier_id', 'supplier_name'); 
+                        $arrEmpty = ['0'=>'--Pilih--'];
+                        $array_merge = array_merge($arrEmpty, $dataList);
+
+                        echo $form->field($model, 'supplier_id')
+                            ->dropDownList(
+                                $array_merge,           // Flat array ('id'=>'label')
+                                ['prompt'=>'']    // options
+                            );
+                    ?>
                 </div>
 
-        <?php ActiveForm::end(); ?>   
+                <div class="col-md-6">
+                    <?= $form->field($model, 'order_date')->textInput(); ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 col-xs-12">
+        <?= $form->field($model, 'order_desc')->textArea(['rows' => '4']); ?>
+        </div>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <hr>
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+        </div> 
+    </div
+
+    <div class="form-group">
+        <?= Html::submitButton($button, ['class' => 'btn btn-primary', 'name' => 'category-button']) ?>
+    </div>
+
+<?php ActiveForm::end(); ?>
 
 

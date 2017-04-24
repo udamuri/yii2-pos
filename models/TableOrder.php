@@ -37,7 +37,7 @@ class TableOrder extends \yii\db\ActiveRecord
         return [
             [['supplier_id', 'order_invoice', 'order_desc', 'order_created_at', 'order_updated_at', 'order_total', 'userid'], 'required'],
             [['supplier_id', 'order_receive_status', 'order_type', 'order_discount', 'userid'], 'integer'],
-            [['order_created_at', 'order_updated_at'], 'safe'],
+            [['order_created_at', 'order_updated_at', 'order_date'], 'safe'],
             [['order_total'], 'number'],
             [['order_invoice', 'order_desc'], 'string', 'max' => 255],
         ];
@@ -52,6 +52,7 @@ class TableOrder extends \yii\db\ActiveRecord
             'order_id' => 'Order ID',
             'supplier_id' => 'Supplier ID',
             'order_invoice' => 'Order Invoice',
+            'order_date' => 'Order Date',
             'order_desc' => 'Order Desc',
             'order_receive_status' => 'Order Receive Status',
             'order_type' => 'Order Type',

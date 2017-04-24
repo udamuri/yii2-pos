@@ -11,6 +11,7 @@ use app\models\TableOrder;
  * @property integer $order_id
  * @property integer $supplier_id
  * @property string $order_invoice
+ * @property date $order_date
  * @property string $order_desc
  * @property integer $order_receive_status
  * @property integer $order_type
@@ -27,11 +28,13 @@ class OrderPurchaseForm extends Model
     public $order_id;
     public $supplier_id;
     public $order_invoice;
+    public $order_date;
     public $order_desc;
     public $order_receive_status;
     public $order_type;
     public $order_discount;
     public $order_total;
+    public $order_item;
     public $product_updated_at;
     public $userid;
  
@@ -48,9 +51,12 @@ class OrderPurchaseForm extends Model
 			['order_invoice', 'required'],
             ['order_invoice', 'filter', 'filter' => 'trim'],
             ['order_invoice', 'string', 'max' => 255],
-			['order_invoice', 'checkInvoiceAlias'],
+            ['order_invoice', 'checkInvoiceAlias'],
 
-            ['order_desc', 'required'],
+            ['order_date', 'required'],
+            ['order_date', 'safe'],
+			['order_date', 'date'],
+
             ['order_desc', 'filter', 'filter' => 'trim'],
             ['order_desc', 'string', 'max' => 255],
 
@@ -59,6 +65,9 @@ class OrderPurchaseForm extends Model
 
             ['order_type', 'required'],   
             ['order_type', 'integer'],
+
+            ['order_item', 'required'],   
+            ['order_item', 'checkInvoiceItem'],
 
             ['order_discount', 'required'],
             ['order_discount', 'double'], 
@@ -75,6 +84,14 @@ class OrderPurchaseForm extends Model
         if(($model && $model->order_invoice != $this->order_invoice))
         {
             $this->addError($attribute, 'No Faktur Sudah Ada.');
+        }
+    }
+
+    public function checkInvoiceItem($attribute, $params)
+    {
+        if(!is_array($this->order_item))
+        {
+            $this->addError($attribute, 'Item Masi Kosong');
         }
     }
 
@@ -138,6 +155,7 @@ class OrderPurchaseForm extends Model
             'order_id' => 'Order ID',
             'supplier_id' => 'Supplier',
             'order_invoice' => 'No Faktur',
+            'order_date' => 'Tanggal Pemesanan',
             'order_desc' => 'Deskripsi',
             'order_receive_status' => 'Receive Status',
             'order_type' => 'Tipe Order',
@@ -145,6 +163,7 @@ class OrderPurchaseForm extends Model
             'order_updated_at' => 'Updated At',
             'order_discount' => 'Diskon',
             'order_total' => 'Total',
+            'order_item' => 'Item',
             'userid' => 'User id',
         ];
     }
