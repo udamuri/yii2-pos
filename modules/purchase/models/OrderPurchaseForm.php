@@ -34,7 +34,7 @@ class OrderPurchaseForm extends Model
     public $order_type;
     public $order_discount;
     public $order_total;
-    public $order_item;
+    public $order_item = [];
     public $product_updated_at;
     public $userid;
  
@@ -54,8 +54,8 @@ class OrderPurchaseForm extends Model
             ['order_invoice', 'checkInvoiceAlias'],
 
             ['order_date', 'required'],
-            ['order_date', 'safe'],
-			['order_date', 'date'],
+            //['order_date', 'safe'],
+			['order_date', 'date', 'format'=>'yyyy-mm-dd'],
 
             ['order_desc', 'filter', 'filter' => 'trim'],
             ['order_desc', 'string', 'max' => 255],
@@ -67,7 +67,8 @@ class OrderPurchaseForm extends Model
             ['order_type', 'integer'],
 
             ['order_item', 'required'],   
-            ['order_item', 'checkInvoiceItem'],
+            //['order_item', 'checkInvoiceItem'],
+            ['order_item', 'each'],
 
             ['order_discount', 'required'],
             ['order_discount', 'double'], 
@@ -79,7 +80,7 @@ class OrderPurchaseForm extends Model
 
     public function checkInvoiceAlias($attribute, $params)
     {
-        $alias = $this->product_barcode;
+        $alias = $this->order_invoice;
         $model = TableOrder::find()->where(['order_invoice'=>$alias])->one();
         if(($model && $model->order_invoice != $this->order_invoice))
         {
