@@ -26,6 +26,7 @@ $jsx = <<< 'SCRIPT'
 SCRIPT;
 $this->registerJs('IndexObj.baseUrl = "'. Yii::$app->homeUrl.'"', \yii\web\View::POS_HEAD);
 $this->registerJs('IndexObj.csrfToken = "'. $token.'"',  \yii\web\View::POS_HEAD);
+$this->registerJs('PurchaseObj.layout = "paddupdate"');
 $this->registerJs($jsx);
 
 ?>
