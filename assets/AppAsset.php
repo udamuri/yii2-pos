@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
 	    'css/flat-master/css/bootstrap-flat.min.css',
     ];
     public $js = [
+        'jqueryui/jquery-ui.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
