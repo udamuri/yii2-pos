@@ -7,6 +7,7 @@ function purchase()
 	{	
 		if(PurchaseObj.layout == 'paddupdate')
 		{
+			PurchaseObj.mybtn();
 			if($('#orderpurchaseform-order_date').length > 0)
 			{
 				$('#orderpurchaseform-order_date').datepicker({ 
@@ -16,6 +17,14 @@ function purchase()
 				});
 			}
 		}
+	}
+
+	this.mybtn = function()
+	{
+		$('#btn-find').unbind('click');
+		$('#btn-find').on('click', function(){
+			alert('tes');
+		});
 	}
 	
 }

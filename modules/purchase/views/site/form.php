@@ -53,9 +53,60 @@ use app\models\TableSupplier;
         </div> 
     </div>
 
+    <div class="row margin-bottom10">
+        <div class="col-md-10 col-sm-12 col-xs-12">
+            <input type="text" class="form-control" name="">    
+        </div>
+
+        <div class="col-md-2 col-sm-12 col-xs-12">
+            <button id="btn-find" class="btn btn-success btn-block" type="button">Find</button>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-resposnsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="bg-pos">
+                            <th class="text-center">Kode</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Harga Beli</th>
+                            <th class="text-center">Jumlah</th>
+                            <th class="text-center">Subtotal</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
 
+                    <tbody id="detail-item">
+                        <?php for($i=1;$i<=3;$i++) { ?>
+                        <tr>
+                            <td>1234</td>
+                            <td>Sampo 1</td>
+                            <td>18.000,00</td>
+                            <td>1</td>
+                            <td>18.000,00</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>1235</td>
+                            <td>Sampo 2</td>
+                            <td>18.000,00</td>
+                            <td>1</td>
+                            <td>18.000,00</td>
+                            <td></td>
+                        </tr>
+                        <?php } ?>
+                        <tr>
+                            <td colspan="6" class="text-right">
+                                <b>Total : Rp.750.000,00</b>
+                                <?= $form->field($model, 'order_total')->textInput(['class'=>'form-control text-right hidden'])->label(false); ?>    
+                                    </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div> 
     </div
 
